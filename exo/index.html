@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list example</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 8px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>My shopping list</h1>
+
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button onclick="myFunction()">Add item</button>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <script>
+  // Créez des références aux éléments
+  const shoppingList = document.getElementById('shoppingList');
+        const inputField = document.getElementById('item');
+        const addButton = document.getElementById('addItem');
+
+        // Fonction pour ajouter un élément à la liste
+        function addItemToList() {
+            // Récupérer la valeur du champ
+            const itemValue = inputField.value;
+
+            // Vider le champ
+            inputField.value = '';
+
+            // Créer de nouveaux éléments
+            const listItem = document.createElement('li');
+            const span = document.createElement('span');
+            const deleteButton = document.createElement('button');
+
+            // Ajouter le texte au span et au bouton
+            span.textContent = itemValue;
+            deleteButton.textContent = 'Supprimer';
+
+            // Attacher le span et le bouton à l'élément li
+            listItem.appendChild(span);
+            listItem.appendChild(deleteButton);
+
+            // Attacher l'élément li à la liste
+            shoppingList.appendChild(listItem);
+
+            // Ajouter un gestionnaire d'événement au bouton de suppression
+            deleteButton.addEventListener('click', function () {
+                shoppingList.removeChild(listItem);
+            });
+        }
+
+        // Ajouter un gestionnaire d'événement au bouton d'ajout
+        addButton.addEventListener('click', addItemToList);
+    </script>
+  </body>
+</html>
+
+// 
